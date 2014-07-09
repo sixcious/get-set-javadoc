@@ -18,14 +18,14 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * {@code GetSetJavaDoc} adds JavaDoc comments for getters and setters found in Java classes.
+ * {@code GetSetJavadoc} adds Javadoc comments for getters and setters found in Java classes.
  * <p/>
  * For usage and examples, see the accompanying README.MD file.
  *
  * @author  Roy Six
  * @version 1.0
  */
-public class GetSetJavaDoc {
+public class GetSetJavadoc {
 
     /**
      * Main method.
