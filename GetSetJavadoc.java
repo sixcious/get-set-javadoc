@@ -26,6 +26,9 @@ import java.util.regex.Pattern;
  * @version 1.0
  */
 public class GetSetJavadoc {
+    
+    private static final String IN = "    ";
+    private static final String LS = System.lineSeparator();
 
     /**
      * Main method.
@@ -66,8 +69,6 @@ public class GetSetJavadoc {
     private static void writeFile(String fileName) throws IOException {
         List<String> lines = Files.readAllLines(Paths.get(fileName), StandardCharsets.UTF_8);
         try (PrintWriter writer = new PrintWriter(new FileWriter(fileName, false))) {
-            String in = "    ";
-            String ls = System.lineSeparator();
             Pattern getp = Pattern.compile("(?<=.*get).*(?=\\(.*\\{)"); // still finds if statements and such with curly braces!
             Pattern setp = Pattern.compile("(?<=.*set).*(?=\\(.*\\{)");
             for (int i = 0; i < lines.size(); i++) {
@@ -75,23 +76,23 @@ public class GetSetJavadoc {
                     Matcher getm = getp.matcher(lines.get(i)); // Get:
                     if (getm.find()) {
                         String field = Introspector.decapitalize(getm.group());
-                        writer.write(in + "/**" + ls +
-                                     in + " * Gets {@link #" + field + "}." + ls +
-                                     in + " * " + ls +
-                                     in + " * @return {@link #" + field + "}" + ls +
-                                     in + " */" + ls);
+                        writer.write(IN + "/**" + LS +
+                                     IN + " * Gets {@link #" + field + "}." + LS +
+                                     IN + " * " + LS +
+                                     IN + " * @return {@link #" + field + "}" + LS +
+                                     IN + " */" + LS);
                     }
                     Matcher setm = setp.matcher(lines.get(i)); // Set:
                     if (setm.find()) {
                         String field = Introspector.decapitalize(setm.group());
-                        writer.write(in + "/**" + ls +
-                                     in + " * Sets {@link #" + field + "}." + ls +
-                                     in + " * " + ls +
-                                     in + " * @param " + field + " {@link #" + field + "}" + ls +
-                                     in + " */" + ls);
+                        writer.write(IN + "/**" + LS +
+                                     IN + " * Sets {@link #" + field + "}." + LS +
+                                     IN + " * " + LS +
+                                     IN + " * @param " + field + " {@link #" + field + "}" + LS +
+                                     IN + " */" + LS);
                     }
                 }
-                writer.write(lines.get(i) + i != ls.size() - 1 ? ls : ""); // Write the original line
+                writer.write(lines.get(i) + i != lines.size() - 1 ? LS : ""); // Write the original line + LS/""
             }
         }
     }
