@@ -92,7 +92,7 @@ public class GetSetJavadoc {
                                      IN + " */" + LS);
                     }
                 }
-                writer.write(lines.get(i) + i != lines.size() - 1 ? LS : ""); // Write the original line + LS/""
+                writer.write(lines.get(i) + (i != lines.size() - 1 ? LS : "")); // Write the original line + LS if not last line
             }
         }
     }
