@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 Roy Six
+ * Copyright (c) 2014 Six
  */
 
 import java.beans.Introspector;
@@ -22,7 +22,7 @@ import java.util.regex.Pattern;
  * <p/>
  * For usage and examples, see the accompanying README.MD file.
  *
- * @author  Roy Six
+ * @author  Six
  * @version 1.0
  */
 public class GetSetJavadoc {
